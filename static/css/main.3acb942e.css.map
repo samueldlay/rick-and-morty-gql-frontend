@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.3acb942e.css","mappings":"AAAA,KACE,wBACF,CAEA,KACE,mBACF","sources":["styles.css"],"sourcesContent":["body {\n  background-color: #242425;\n}\n\n.App {\n  font-family: courier;\n}\n"],"names":[],"sourceRoot":""}
