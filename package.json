@@ -1,6 +1,7 @@
 {
   "name": "r-and-m-gql-api",
   "version": "2.0.0",
+  "homepage": "https://samueldlay.github.io/rick-and-morty-gql-frontend",
   "description": "",
   "keywords": [],
   "main": "src/index.tsx",
@@ -16,6 +17,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
