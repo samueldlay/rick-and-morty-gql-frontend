@@ -12,15 +12,13 @@ type Character = {
   image: string;
 };
 
-export default function App () {
+export default function RMCards () {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [pageNumber, setPageNumber] = useState<number>(1);
   const [pages, setPages] = useState<number>();
   const [loading, setLoading] = useState<boolean>(false);
   const [flip, setFlip] = useState(false);
   const [charIndex, setCHarIndex] = useState<number>();
-  const [rotate, setRotate] = useState<string>('');
-  const [episodes, setEpisodes] = useState<any[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -28,7 +26,6 @@ export default function App () {
       setLoading(true);
       window.scrollTo(0, 0);
       const characters = await getCharacters(pageNumber);
-      console.log("characters:", characters);
 
       setCharacters(characters.results);
       setPages(characters.info.pages);
@@ -38,18 +35,7 @@ export default function App () {
 
   useEffect(() => {
     setFlip(true);
-  }, [charIndex])
-
-
-  useEffect(() => {
-    // setFlip(true);
-    if (flip) {
-      // setTimeout(() => {
-      setRotate('rotateY(1turn)');
-      // }, 300)
-    } else setRotate('rotateY(-1turn)')
-    // setRotate(true);
-  }, [flip])
+  }, [charIndex]);
 
   const pagination = () => {
     if (typeof pages === "number") {
@@ -57,7 +43,6 @@ export default function App () {
       for (let i = 1; i <= pages; i++) {
         pagesArray.push(i);
       }
-      // const selectedPage = 1;
       const endIndex = pageNumber < 5 ? 7 : pageNumber + 3;
       const beginIndex = pageNumber > 5 ? (pageNumber - 3) : 0;
       const pageElements = pagesArray.slice(beginIndex, endIndex).map((pageNum) => (
@@ -93,12 +78,10 @@ export default function App () {
                 width: "20rem",
                 height: '32rem',
                 color: '#fafafa',
-                // transform: index === charIndex ? rotate : '',
-                // WebkitTransform: index === charIndex ? rotate : '',
                 transition: '.900s',
                 position: 'relative'
               }}
-              key={index}
+              key={`${index} ${char}`}
               onClick={() => {
                 setFlip(!flip)
                 setCHarIndex(index);

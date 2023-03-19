@@ -1,6 +1,6 @@
-import { render } from "react-dom";
+import {render} from "react-dom";
 
-import App from "./App";
+import RMCards from "./RMCards";
 
 const rootElement = document.getElementById("root");
-render(<App />, rootElement);
+render(<RMCards />, rootElement);
