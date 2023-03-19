@@ -1,7 +1,19 @@
 import RMCards from './RMCards';
-import {render, prettyDOM} from '@testing-library/react';
+import {render, screen} from '@testing-library/react';
 
-test('App Runs', () => {
-  const {container} = render(<RMCards />);
-  console.log(prettyDOM(container));
+test('App renders', () => {
+  render(<RMCards />);
+});
+
+test('First page of results renders', async () => {
+  render(<RMCards />);
+  await screen.findByText(/rick sanchez/i);
+});
+
+
+test('Character details render when \"flip\" is clicked', async () => {
+  render(<RMCards />);
+  const flipButtons = await screen.findAllByText(/flip/i);
+  flipButtons[0].click();
+  screen.findAllByText(/Citadel of Ricks/i);
 });

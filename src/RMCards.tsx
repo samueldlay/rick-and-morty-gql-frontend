@@ -81,7 +81,7 @@ export default function RMCards () {
                 transition: '.900s',
                 position: 'relative'
               }}
-              key={index}
+              key={`${index} ${char}`}
               onClick={() => {
                 setFlip(!flip)
                 setCHarIndex(index);
