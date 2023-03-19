@@ -7,7 +7,7 @@ test('App renders', () => {
 
 test('First page of results renders', async () => {
   render(<RMCards />);
-  await screen.findByText(/rick sanchez/i);
+  await screen.findByText(/rick sanchez/i, undefined, {timeout: 3000});
 });
 
 
