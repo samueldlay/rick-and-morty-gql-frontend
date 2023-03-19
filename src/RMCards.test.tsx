@@ -15,5 +15,5 @@ test('Character details render when \"flip\" is clicked', async () => {
   render(<RMCards />);
   const flipButtons = await screen.findAllByText(/flip/i);
   flipButtons[0].click();
-  screen.findAllByText(/Citadel of Ricks/i);
+  screen.findByText(/Citadel of Ricks/i, undefined, {timeout: 3000});
 });
