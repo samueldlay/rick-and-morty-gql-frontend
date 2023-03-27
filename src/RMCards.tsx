@@ -45,7 +45,7 @@ export default function RMCards () {
       }
       const endIndex = pageNumber < 5 ? 7 : pageNumber + 3;
       const beginIndex = pageNumber > 5 ? (pageNumber - 3) : 0;
-      const pageElements = pagesArray.slice(beginIndex, endIndex).map((pageNum) => (
+      const pageElements = pagesArray.slice(beginIndex, endIndex - 1).map((pageNum) => (
         <h2 style={{cursor: "pointer", color: pageNum === pageNumber ? '#f59' : '#fff'}} onClick={() => setPageNumber(pageNum)}>
           {pageNum}
         </h2>
@@ -59,9 +59,9 @@ export default function RMCards () {
       <div style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", gap: "1rem", color: '#fff', backgroundColor: '#242425', position: 'sticky', top: 0, width: '100%', zIndex: 50}}>
         <h1>Rick and Morty Characters:</h1>
         <div style={{display: "flex", gap: "1rem"}}>
-          {typeof pages === 'number' && <h2 onClick={() => pageNumber > 1 && setPageNumber(pageNumber - 1)} style={{cursor: 'pointer'}}>{pageNumber > 5 && '<<'}</h2>}
+          {typeof pages === 'number' && <h2 onClick={() => pageNumber > 1 && setPageNumber(pageNumber - 1)} style={{cursor: 'pointer'}}>{pageNumber > 5 && '<'}</h2>}
           {pagination()}
-          {typeof pages === 'number' && <h2 onClick={() => ((pageNumber + 3) < pages && setPageNumber(pageNumber + 1))} style={{cursor: 'pointer'}}>{(pageNumber + 3) < pages && '>>'}</h2>}
+          {typeof pages === 'number' && <h2 onClick={() => ((pageNumber + 3) < pages && setPageNumber(pageNumber + 1))} style={{cursor: 'pointer'}}>{(pageNumber + 3) < pages && '>'}</h2>}
         </div>
       </div>
       <div
